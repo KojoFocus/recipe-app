@@ -1,6 +1,7 @@
 import { Container, TextField, Grid, } from "@mui/material";
 import RecipeItem from "../../components/recipe-item";
 import {useEffect, useState} from "react";
+import noRecipes from "../../assets/images/undraw_no_data_re_kwbl.svg"
 
 export default function Recipes() {
 
@@ -38,7 +39,7 @@ setRecipes(data.results);
                 'Enter'&& searchRecipes()}
             />
             <Grid sx={{ mt: '1rem' }} container spacing={3}>
-                {recipes.map((recipe) => <RecipeItem key={recipe.id} title={recipe.title} image={recipe.image} />)}
+                {recipes.length>0 ? recipes.map((recipe) => <RecipeItem key={recipe.id} title={recipe.title} image={recipe.image} />) : <img src={noRecipes} width="25%"/>}
 
             </Grid>
         </Container>
